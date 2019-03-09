@@ -9,7 +9,6 @@ namespace Snake
         static void Main()
         {
             SnakeGame game = new SnakeGame();
-            //game.Menu();
             game.Start();
         }
     }
