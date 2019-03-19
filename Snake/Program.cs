@@ -32,7 +32,7 @@ namespace Snake
             {
                 if(_snakeControl.StartMove())
                     break;
-                Thread.Sleep(200);
+                Thread.Sleep(50);
             }
             GameOver();
         }
