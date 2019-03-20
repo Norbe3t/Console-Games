@@ -9,8 +9,8 @@ namespace SnakeGame
     {
         static void Main()
         {
-            Snake snake = new Snake();
-            Console.WriteLine(snake);
+            GameEngine game = new GameEngine();
+            game.Start();
             Console.ReadKey();
         }
     }
