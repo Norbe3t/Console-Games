@@ -4,17 +4,17 @@ namespace SnakeGame
 {
     class GameArea
     {
-        public int Width { get; private set; }
-        public int Height { get; private set; }
-        public char Border { get; private set; }
-        public char Area { get; private set; }
+        public byte Width { get; private set; }
+        public byte Height { get; private set; }
+        public char BorderSymbol { get; private set; }
+        public char AreaSymbol { get; private set; }
 
-        public GameArea(int width, int height, char border, char area)
+        public GameArea(byte width, byte height, char borderSymbol = '#', char areaSymbol = ' ')
         {
             Width = width;
             Height = height;
-            Border = border;
-            Area = area;
+            BorderSymbol = borderSymbol;
+            AreaSymbol = areaSymbol;
         }
     }
 }

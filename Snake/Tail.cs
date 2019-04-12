@@ -4,9 +4,13 @@ namespace SnakeGame
 {
     class Tail
     {
-        private int x;
-        private int y;
+        public byte X { get; set; }
+        public byte Y { get; set; }
 
-        public void Move(){}
+        public Tail(byte x, byte y)
+        {
+            X = x;
+            Y = y;    
+        }
     }
 }

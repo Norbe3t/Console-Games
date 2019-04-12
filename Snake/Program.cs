@@ -11,7 +11,7 @@ namespace SnakeGame
         {
             GameEngine game = new GameEngine();
             game.Start();
-            Console.ReadKey();
+            while(true);
         }
     }
 }
