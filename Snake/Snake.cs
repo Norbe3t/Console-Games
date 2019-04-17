@@ -42,6 +42,17 @@ namespace SnakeGame
             return false;
         }
 
+        public bool IsFoodIsTail() {
+            foreach (var tail in Tail)
+            {
+                if(tail.X == X && tail.Y == Y)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public void MoveUp(byte maxY)
         {
 

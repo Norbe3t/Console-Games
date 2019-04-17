@@ -8,6 +8,7 @@ namespace SnakeGame
     {
         Random random;
         private int direction = 0;
+        private bool isGameRunning = false;
 
         Draw draw;
         GameArea gameArea;
@@ -25,11 +26,12 @@ namespace SnakeGame
 
         public void Start()
         {
+            isGameRunning = true;
             draw.DrawGameArea(gameArea);
             draw.DrawSnake(snake, gameArea);
             draw.DrawFood(food);
 
-            RenderAsync(100);
+            RenderAsync(60);
             SetDirectionAsync();
         }
 
@@ -59,7 +61,7 @@ namespace SnakeGame
 
         private void SetDirection()
         {
-            while(true)
+            while(isGameRunning)
             {
                 if(Console.KeyAvailable)
                 {
@@ -67,16 +69,20 @@ namespace SnakeGame
                     switch(key.Key)
                     {
                         case ConsoleKey.UpArrow:
-                            direction = 0;
+                            if(direction != 1)
+                                direction = 0;
                             break;
                         case ConsoleKey.DownArrow:
-                            direction = 1;
+                            if(direction != 0)
+                                direction = 1;
                             break;
                         case ConsoleKey.LeftArrow:
-                            direction = 2;
+                            if(direction != 3)
+                                direction = 2;
                             break;
                         case ConsoleKey.RightArrow:
-                            direction = 3;
+                            if(direction != 2)
+                                direction = 3;
                             break;
                     }
                 }
@@ -90,22 +96,34 @@ namespace SnakeGame
 
         private void Render(int fps)
         {
-            while(true)
+            while(isGameRunning)
             {
                 draw.ClearSnakeTrack(snake, gameArea);
                 Move();
                 draw.DrawSnake(snake, gameArea);
                 TryEat();
-                draw.DrawFood(food);
-                Thread.Sleep(fps);
+                if (isGameRunning)
+                {    
+                    draw.DrawFood(food);
+                    Thread.Sleep(fps);   
+                }
             }
         }
 
         private void TryEat()
         {
-            if(snake.Eat(food))
+            if(!snake.IsFoodIsTail())
             {
-                food.SetNewCoordinate(snake, gameArea);   
+                if(snake.Eat(food))
+                {
+                    food.SetNewCoordinate(snake, gameArea);   
+                }
+            }
+            else
+            {
+                isGameRunning = false;
+                Console.Clear();
+                Console.WriteLine("Game over !");
             }
         }
     }
