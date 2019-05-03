@@ -28,6 +28,7 @@ namespace SnakeGame
         {
             isGameRunning = true;
             draw.DrawGameArea(gameArea);
+            draw.DrawBonusArea(gameArea);
             draw.DrawSnake(snake, gameArea);
             draw.DrawFood(food);
 

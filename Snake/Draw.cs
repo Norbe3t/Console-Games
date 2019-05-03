@@ -23,6 +23,22 @@ namespace SnakeGame
             }
         }
 
+        public void DrawBonusArea(GameArea gameArea)
+        {
+            Console.SetCursorPosition(0, gameArea.Height);
+            for(int i = 0; i < 5; i++)
+            {
+                if(i != 4)
+                {
+                    Console.WriteLine(gameArea.BorderSymbol + new string(gameArea.AreaSymbol, gameArea.Width - 2) + gameArea.BorderSymbol);
+                }
+                else 
+                {
+                    Console.WriteLine(new string(gameArea.BorderSymbol, gameArea.Width));
+                }
+            }
+        }
+
         public void DrawSnake(Snake snake, GameArea gameArea)
         {
             ClearSnakeTrack(snake, gameArea);
